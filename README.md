@@ -123,6 +123,8 @@ find . -type f -empty -delete
 
 remove any extra files that might be in the folder that are zero bytes
 
-after the script is done doing it's thing, you are going to have two sets of files, the .txt files are just the links of the mp3 files, use them to download if you want and the m3u files, these are the ones i'm including here in this repo
+after the script is done doing it's thing, you are going to have two sets of files, the .txt files are just the links of the mp3 files, use them to download the audio books if you want 
+
+and the m3u files, these are the ones i'm including here in this repo, drag them to vlc or mpv to start listening
 
 </details>
