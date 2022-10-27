@@ -1,14 +1,22 @@
 # easy-m3u-audiobooks
 a collection of free audio books from archive.org in a easy to use m3u format
 
+<br>
+
 ## Why?
 because it's easier to listen than to download, there is so much stuff out there it doesn't make sense to me to download them when i can stream them and not put any load on the servers
+
+<br>
 
 ## What kinds of audio books do you plan to include?
 all kinds of different stuff, i'm planning to support this repo extensively, feel free to request different genres or artists and i'll try my best to include them here
 
+<br>
+
 ## How?
 it was started as a test to see if i could do it, now i have a system to scrape somewhat efficiently and i'm going to explain it here in detail, my script is also going to be added to repo so you can do it on your own too
+
+<br>
 
 ## These lack extra info, where should look to know more about them
 because everything is done in bulk, there is no way to name these manualy, luckily you can easily find the `archive.org` page for any audio books by adding it's name to this string and opening the page in your web browser, here is an example
@@ -18,7 +26,15 @@ i'm interested to know what the file `indian_fairy_tales_1304_librivox.m3u` is a
 https://archive.org/details/indian_fairy_tales_1304_librivox
 ```
 
+<br>
+
 ## The bash script
+this script relies on gnu core utils and the lynx web browser, if you are on linux or mac you already have access to gnu core utils and installing lynx is as easy of finding it in your package manager
+
+on windows i recommend using cygwin, msys2 or wsl/2, cygwing has lynx packaged and there are windows binaries out them for other platforms
+
+<br>
+
 so the first thing to do is to make a text file that includes the links you want to scrape, this can have one or many links in it, here is an example list file, i'll call it `list.txt`
 
 ```
