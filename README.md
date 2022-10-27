@@ -49,3 +49,27 @@ sed -i 's/\r$//' temp_a.txt
 ```
 
 this line convert the windows text file format to a unix one to avoid erros in file names, if you are not on windows just it's not needed but doesn't harm anything either
+
+<br>
+
+```
+for i in $(cat temp_a.txt) ; do lynx --dump --listonly --nonumbers "https://archive.org/download/$i" | grep "128kb.mp3" | grep -v "64kb" | grep -v ".zip" > $i.txt ; done
+```
+
+this line scrapes the actual links, here is what's happening:
+
+`lynx` is a command line web browser that easily dumps the data from a website for us, we are feeding the info from the `temp_a.txt` to it here via a for loop, this will go thru the text file one by one and inserts it into the program, `grep` is used here to find the string 1`28kb.mp3` and exclude the links with `64kb` and `.zip` in them, finally create the text files for each link with their archive.org names
+
+this will work in most of the links but not all, so we will run this command again with a slightly differnt thing to look for to get all the links, so lets do that in the next line
+
+```
+find *.txt -size 0 | sed 's/.txt//g' > temp_b.txt
+```
+
+this line finds every file that doesn't has anything in it and copies their name to the temp_b.txt file, lets use this new file to get the other links
+
+```
+for i in $(cat temp_b.txt) ; do lynx --dump --listonly --nonumbers "https://archive.org/download/$i" | grep ".mp3" | grep -v "64kb" | grep -v ".zip" > $i.txt ; done
+```
+
+this command is very similar to the last command but here we are only looking for the links that weren't scrape correctly
