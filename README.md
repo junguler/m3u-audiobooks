@@ -33,6 +33,9 @@ this script relies on gnu core utils and the lynx web browser, if you are on lin
 
 on windows i recommend using cygwin, msys2 or wsl/2, cygwing has lynx packaged and there are windows binaries out them for other platforms
 
+<details>
+  <summary>click me to read</summary>
+  
 <br>
 
 so the first thing to do is to make a text file that includes the links you want to scrape, this can have one or many links in it, here is an example list file, i'll call it `list.txt`
@@ -119,3 +122,7 @@ find . -type f -empty -delete
 ```
 
 remove any extra files that might be in the folder that are zero bytes
+
+after the script is done doing it's thing, you are going to have two sets of files, the .txt files are just the links of the mp3 files, use them to download if you want and the m3u files, these are the ones i'm including here in this repo
+
+</details>
