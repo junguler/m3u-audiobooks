@@ -13,11 +13,6 @@ all kinds of different stuff, i'm planning to support this repo extensively, fee
 
 <br>
 
-## How?
-it was started as a test to see if i could do it, now i have a system to scrape somewhat efficiently and i'm going to explain it here in detail, my script is also going to be added to repo so you can do it on your own too
-
-<br>
-
 ## These lack extra info, where should look to know more about them
 because everything is done in bulk, there is no way to name these manualy, luckily you can easily find the `archive.org` page for any audio books by adding it's name to this string and opening the page in your web browser, here is an example
 
