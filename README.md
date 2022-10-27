@@ -26,7 +26,7 @@ https://archive.org/details/indian_fairy_tales_1304_librivox
 ## The bash script
 this script relies on gnu core utils and the lynx web browser, if you are on linux or mac you already have access to gnu core utils and installing lynx is as easy of finding it in your package manager
 
-on windows i recommend using cygwin, msys2 or wsl/2, cygwing has lynx packaged and there are windows binaries out them for other platforms
+on windows i recommend using cygwin, msys2 or wsl/2, cygwing has lynx packaged and there are windows binaries out there for other platforms
 
 <details>
   <summary>click me to read</summary>
@@ -121,5 +121,29 @@ remove any extra files that might be in the folder that are zero bytes
 after the script is done doing it's thing, you are going to have two sets of files, the .txt files are just the links of the mp3 files, use them to download the audio books if you want 
 
 and the m3u files, these are the ones i'm including here in this repo, drag them to vlc or mpv to start listening
+
+</details>
+
+<br>
+
+## scrape the links from a archive.org search query
+some times you want every link from a search query to be listed in your list.txt file and don't want to manually include them in the text file, lets take the laziness one step further and do that via the commandline too
+
+<details>
+  <summary>click me to read</summary>
+  
+<br>
+
+open this link in firefox browser `https://archive.org/details/audio_bookspoetry` and search for the subject you are looking for, now take a look at the left side of the page to see how many entries are listed, now scroll the page down so all of them show up so when we save the page all of them are present
+
+save the page as a plain text, now lets use this text file to find the links, i've named this page `web.txt`
+
+```
+cat web.txt | grep "https://archive.org/details/" | grep -v "@\|?\|*\|#\| " | awk '!seen[$0]++' | sed 's/[<>,]//g' > page.txt
+```
+
+using `grep` look for this string `https://archive.org/details/` , with `grep` exclude `@?* #`, use `awk` to remove duplicated entries and `sed` again to remove the few rogue tags that might stil be there, now you are left with the `page.txt` file that is ready to be used with the main script
+
+i'm sure there is a way to save web pages as raw text files in chrome too but becase i don't use it i can't help any further unfortunently
 
 </details>
