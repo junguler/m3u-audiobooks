@@ -73,3 +73,33 @@ for i in $(cat temp_b.txt) ; do lynx --dump --listonly --nonumbers "https://arch
 ```
 
 this command is very similar to the last command but here we are only looking for the links that weren't scrape correctly
+
+<br>
+
+```
+for i in $(cat temp_a.txt) ; do sed "s/^/#EXTINF:-1\n/" $i.txt > temp_c-$i.txt ; done
+```
+
+now lets convert this text file to a m3u stream, add this string `#EXTINF:-1` above every link of text 
+
+```
+for i in $(cat temp_a.txt) ; do sed '1s/^/#EXTM3U\n/' temp_c-$i.txt > $i.m3u ; done
+```
+
+almost done, put this string `#EXTM3U`at the top of the text files and convert them to m3u streams
+
+<br>
+
+all done, now lets do some cleanup
+
+```
+rm temp_a.txt temp_b.txt temp_c-*.txt 
+```
+
+remove the temp files that were created in the process
+
+```
+find . -type f -empty -delete
+```
+
+remove any extra files that might be in the folder that are zero bytes
