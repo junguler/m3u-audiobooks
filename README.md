@@ -40,12 +40,16 @@ https://archive.org/details/alice_in_wonderland_librivox
 https://archive.org/details/moby_dick_librivox
 https://archive.org/details/game_of_life_0911_librivox
 ```
+  
+<br>
 
 now make the script executable by running this command
 ```
 chmod +x m3u.sh
 ```
 without this permission you won't be able to run the script in a unix envierment
+  
+<br>
 
 ```
 #!/bin/bash
@@ -57,12 +61,16 @@ read list
 the first line is to let the shell know what kind of script we are going to run, the `echo` command here shows the text and let's the user know what to do, the `read` parts takes what the user wrote and holds it for when we need it, i'm going to write the name of my text file here which is `list` 
 
 note: don't add the extension here, the name is all you need, the rest of the script runs on it's own and doesn't need any user intraction
+  
+<br>
 
 ```
 sed -e 's!https://archive.org/details/!!' $list.txt > temp_a.txt
 ```
 
 this `sed` command remove the `https://archive.org/details/` from every link and stores the output to the `temp_a.txt` file, we remove the extra part so naming the output files will be easier
+  
+<br>
 
 ```
 sed -i 's/\r$//' temp_a.txt
@@ -81,18 +89,22 @@ this line scrapes the actual links, here is what's happening:
 `lynx` is a command line web browser that easily dumps the data from a website for us, we are feeding the info from the `temp_a.txt` to it here via a for loop, this will go thru the text file one by one and inserts it into the program, `grep` is used here to find the string 1`28kb.mp3` and exclude the links with `64kb` and `.zip` in them, finally create the text files for each link with their archive.org names
 
 this will work in most of the links but not all, so we will run this command again with a slightly differnt thing to look for to get all the links, so lets do that in the next line
+  
+<br>
 
 ```
 find *.txt -size 0 | sed 's/.txt//g' > temp_b.txt
 ```
 
 this line finds every file that doesn't has anything in it and copies their name to the temp_b.txt file, lets use this new file to get the other links
+  
+<br>
 
 ```
 for i in $(cat temp_b.txt) ; do lynx --dump --listonly --nonumbers "https://archive.org/download/$i" | grep ".mp3" | grep -v "64kb" | grep -v ".zip" > $i.txt ; done
 ```
 
-this command is very similar to the last command but here we are only looking for the links that weren't scrape correctly
+this command is very similar to the last command but here we are only looking for the links that weren't scraped correctly
 
 <br>
 
@@ -100,7 +112,9 @@ this command is very similar to the last command but here we are only looking fo
 for i in $(cat temp_a.txt) ; do sed "s/^/#EXTINF:-1\n/" $i.txt > temp_c-$i.txt ; done
 ```
 
-now lets convert this text file to a m3u stream, add this string `#EXTINF:-1` above every link of text 
+convert these text files to a m3u streams, add this string `#EXTINF:-1` above every link in text files
+
+<br>
 
 ```
 for i in $(cat temp_a.txt) ; do sed '1s/^/#EXTM3U\n/' temp_c-$i.txt > $i.m3u ; done
@@ -110,7 +124,7 @@ almost done, put this string `#EXTM3U`at the top of the text files and convert t
 
 <br>
 
-all done, now lets do some cleanup
+all done, now lets do some clean up
 
 ```
 rm temp_a.txt temp_b.txt temp_c-*.txt 
@@ -123,6 +137,8 @@ find . -type f -empty -delete
 ```
 
 remove any extra files that might be in the folder that are zero bytes
+  
+<br>
 
 after the script is done doing it's thing, you are going to have two sets of files, the .txt files are just the links of the mp3 files, use them to download the audio books if you want 
 
