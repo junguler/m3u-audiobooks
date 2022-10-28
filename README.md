@@ -126,7 +126,7 @@ and the m3u files, these are the ones i'm including here in this repo, drag them
 
 <br>
 
-## scrape the links from a archive.org search query
+## scrape the links from a archive.org search query in firebox
 some times you want every link from a search query to be listed in your list.txt file and don't want to manually include them in the text file, lets take the laziness one step further and do that via the commandline too
 
 <details>
@@ -144,6 +144,32 @@ cat web.txt | grep "https://archive.org/details/" | grep -v "@\|?\|*\|#\| " | aw
 
 using `grep` look for this string `https://archive.org/details/` , with `grep` exclude `@?* #`, use `awk` to remove duplicated entries and `sed` again to remove the few rogue tags that might stil be there, now you are left with the `page.txt` file that is ready to be used with the main script
 
-i'm sure there is a way to save web pages as raw text files in chrome too but becase i don't use it i can't help any further unfortunently
+</details>
+
+## scrape the links from a archive.org search query in chrome
+because there is no save as plain text option in chrome we have to do a little work-around for this, i'll explain how
+
+<details>
+  <summary>click me to read</summary>
+  
+<br>
+
+just like in the firefox method, search for the subject you want and scroll down so all of the links are shown and there is no more loading, now save the page in complete html
+
+navigate to the folder you have saved your web page and using python3 start a local server like this
+```
+python3 -m http.server
+```
+this will open a server at local host or `127.0.0.1` and port `8000` , open it in you browser via this link `http://127.0.0.1:8000/` and click on the web page in the folder, my example web page is named `page.html` so the final address to open it becomes `http://127.0.0.1:8000/page.html`
+
+now while the local python server is running lets scrape this link with `lynx`
+
+```
+lynx --dump --listonly --nonumbers http://127.0.0.1:8000/page.html | grep "https://archive.org/details/" | grep -v "@\|?\|*\|#\| " | awk '!seen[$0]++' | sed 's/[<>,]//g' > list.txt
+```
+
+now you have a list.txt that can be used with the script just like the firefox version, you can close the python server by pressing `ctrl + c` on the terminal
+
+there are a few random links in this list file but the script will ignore them because it can't find any mp3 files inside them
 
 </details>
