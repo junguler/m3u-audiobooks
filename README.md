@@ -41,6 +41,12 @@ https://archive.org/details/moby_dick_librivox
 https://archive.org/details/game_of_life_0911_librivox
 ```
 
+now make the script executable by running this command
+```
+chmod +x m3u.sh
+```
+without this permission you won't be able to run the script in a unix envierment
+
 ```
 #!/bin/bash
 
@@ -158,20 +164,12 @@ because there is no save as plain text option in chrome we have to do a little w
 
 just like in the firefox method, search for the subject you want and scroll down so all of the links are shown and there is no more loading, now save the page in complete html
 
-navigate to the folder you have saved your web page and using python3 start a local server like this
-```
-python3 -m http.server
-```
-this will open a server at local host or `127.0.0.1` and port `8000` , open it in you browser via this link `http://127.0.0.1:8000/` and click on the web page in the folder, my example web page is named `page.html` so the final address to open it becomes `http://127.0.0.1:8000/page.html`
-
-now while the local python server is running lets scrape this link with `lynx`
+in the terminal naviagte to the folder you have saved this html file and run this command, i've named it `page.html` in this example
 
 ```
-lynx --dump --listonly --nonumbers http://127.0.0.1:8000/page.html | grep "https://archive.org/details/" | grep -v "@\|?\|*\|#\| " | awk '!seen[$0]++' | sed 's/[<>,]//g' > list.txt
+lynx --dump --listonly --nonumbers page.html | grep "https://archive.org/details/" | grep -v "@\|?\|*\|#\| " | awk '!seen[$0]++' | sed 's/[<>,]//g' > list.txt
 ```
 
-now you have a list.txt that can be used with the script just like the firefox version, you can close the python server by pressing `ctrl + c` on the terminal
-
-there are a few random links in this list file but the script will ignore them because it can't find any mp3 files inside them
+now you have a `list.txt` that can be used with the script just like the firefox version, there are a few random links in this list file but the script will ignore them because it can't find any mp3 files inside them
 
 </details>
