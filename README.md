@@ -126,7 +126,7 @@ and the m3u files, these are the ones i'm including here in this repo, drag them
 
 <br>
 
-## scrape the links from a archive.org search query in firebox
+## Scrape the links from a archive.org search query in firebox
 some times you want every link from a search query to be listed in your list.txt file and don't want to manually include them in the text file, lets take the laziness one step further and do that via the commandline too
 
 <details>
@@ -146,7 +146,9 @@ using `grep` look for this string `https://archive.org/details/` , with `grep` e
 
 </details>
 
-## scrape the links from a archive.org search query in chrome
+<br>
+
+## Scrape the links from a archive.org search query in chrome
 because there is no save as plain text option in chrome we have to do a little work-around for this, i'll explain how
 
 <details>
