@@ -1,8 +1,3 @@
-# easy-m3u-audiobooks
-a collection of free audio books from archive.org in a easy to use m3u format
-
-<br>
-
 ## Why?
 because it's easier to listen than to download, there is so much stuff out there it doesn't make sense to me to download them when i can stream them and not put any load on the servers
 
@@ -13,7 +8,7 @@ all kinds of different stuff, i'm planning to support this repo extensively, fee
 
 <br>
 
-## These lack extra info, where should look to know more about them
+## These lack extra info, where should i look to know more about them
 because everything is done in bulk, there is no way to name these manualy, luckily you can easily find the `archive.org` page for any audio books by adding it's name to this string and opening the page in your web browser, here is an example
 
 i'm interested to know what the file `indian_fairy_tales_1304_librivox.m3u` is about, just add `https://archive.org/details/` in the begining of it to get the actual link like this :
