@@ -148,7 +148,7 @@ and the m3u files, these are the ones i'm including here in this repo, drag them
 
 <br>
 
-## Scrape the links from a archive.org search query in firebox
+## Scrape the links from a archive.org search query in firefox
 some times you want every link from a search query to be listed in your list.txt file and don't want to manually include them in the text file, lets take the laziness one step further and do that via the commandline too
 
 <details>
