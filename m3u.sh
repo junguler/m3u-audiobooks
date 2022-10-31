@@ -13,13 +13,13 @@ sed -i 's/\r$//' temp_a.txt
 echo "start scraping the links for mp3 files"
 
 # for links containing the 128kb.mp3 string
-for i in $(cat temp_a.txt) ; do lynx --dump --listonly --nonumbers "https://archive.org/download/$i" | grep "128kb.mp3" | grep -v "64kb" | grep -v ".zip" > $i.txt ; done
+for i in $(cat temp_a.txt) ; do lynx --dump --listonly --nonumbers "https://archive.org/download/$i" | grep -iF "128kb.mp3" | grep -iFv "64kb" | grep -iFv ".zip" > $i.txt ; done
 
 # find empty files if there is any and copy their names for the next command 
 find *.txt -size 0 | sed 's/.txt//g' > temp_b.txt
 
 # for other links if there is any
-for i in $(cat temp_b.txt) ; do lynx --dump --listonly --nonumbers "https://archive.org/download/$i" | grep ".mp3" | grep -v "64kb" | grep -v ".zip" > $i.txt ; done
+for i in $(cat temp_b.txt) ; do lynx --dump --listonly --nonumbers "https://archive.org/download/$i" | grep -iF ".mp3" | grep -iFv "64kb" | grep -iFv ".zip" > $i.txt ; done
 
 echo "create m3u playlists out of text files"
 
@@ -32,6 +32,8 @@ for i in $(cat temp_a.txt) ; do sed '1s/^/#EXTM3U\n/' temp_c-$i.txt > $i.m3u ; d
 echo "remove empty and temp files"
 
 # remove temp files
+#for i in $(cat temp_a.txt) ; do rm $i.txt ; done
+
 rm temp_a.txt temp_b.txt temp_c-*.txt 
 
 # remove empty files (links that didn't have mp3 files in them)
