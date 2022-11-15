@@ -201,6 +201,8 @@ first install python3 if you don't have it already and using pip install `Beauti
 pip3 install selenium bs4
 ```
 
+you also need to install firefox if you don't have it already and download [geckodriver](https://github.com/mozilla/geckodriver/releases) and make sure both of them are on your system PATH
+
 i'm not going to explain how the python script itself works because i don't even know it but i know how to use it and that's what i'll go over
 
 ```
