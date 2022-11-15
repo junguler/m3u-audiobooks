@@ -4,7 +4,7 @@ because it's easier to listen than to download, there is so much stuff out there
 <br>
 
 ## What kinds of audio books do you plan to include?
-all kinds of different stuff, i'm planning to support this repo extensively, feel free to request different genres or author and i'll try my best to include them here
+all kinds of different stuff, i'm planning to support this repo extensively, feel free to request different genres or authors and i'll try my best to include them here
 
 <br>
 
