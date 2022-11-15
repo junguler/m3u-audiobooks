@@ -184,3 +184,37 @@ lynx --dump --listonly --nonumbers page.html | grep "https://archive.org/details
 now you have a `list.txt` that can be used with the script just like the firefox version, there are a few random links in this list file but the script will ignore them because it can't find any mp3 files inside them
 
 </details>
+
+<br>
+
+## Scrape the links from a archive.org using python and selenium
+trying to make things more automated i've made a simple python script to scrape the pages and scroll down the dynamic pages automatically, lets explain this in some detail
+
+<details>
+  <summary>click me to read</summary>
+  
+<br>
+
+first install python3 if you don't have it already and using pip install `BeautifulSoup` and `selenium`
+
+```
+pip3 install selenium bs4
+```
+
+i'm not going to explain how the python script itself works because i don't even know it but i know how to use it and that's what i'll go over
+
+```
+python3 scrape.py --url https://archive.org/details/librivoxaudio?and[]=year%3A%222007%22
+```
+
+the above command scrapes all the links from `https://archive.org/details/librivoxaudio?and[]=year%3A%222007%22` and prints them to your terminal, now lets pipe this output to several programs to get a usefull output for our `m3u.sh` script
+
+```
+python3 scrape.py --url https://archive.org/details/librivoxaudio?and[]=year%3A%222007%22 | sort | uniq | grep "details" | grep -v "@\|?\|%" | sed 's/^/https:\/\/archive.org/' > links.txt
+```
+
+`sort` does exactly what you think and it's required for `uniq` to work, uniq removes duplicates, then using `sed` we look for `details` in links because all of the pages we want to scrape from include them, remove `@?%` using `sed` because those links are also irrelevent to us and finally using `sed` add the string `https://archive.org` to the begining of all the links and save to `links.txt`
+
+this will effectively get us the exact same output if we scrolled the pages to the bottom and saved them manually
+
+</details>
