@@ -23,18 +23,15 @@ for i in $(cat temp_b.txt) ; do lynx --dump --listonly --nonumbers "https://arch
 
 echo "create m3u playlists out of text files"
 
-# add #EXTINF:-1 at the begining of every other line (mostly used for kodi and other other hardware)
-for i in $(cat temp_a.txt) ; do sed "s/^/#EXTINF:-1\n/" $i.txt > temp_c-$i.txt ; done
-
-# add #EXTM3U at the first line of the file and convert text to m3u file 
-for i in $(cat temp_a.txt) ; do sed '1s/^/#EXTM3U\n/' temp_c-$i.txt > $i.m3u ; done
+# add #EXTINF:-1 at the begining of every other line and #EXTM3U at the first line and convert the text file to m3u stream
+for i in $(cat temp_a.txt) ; do sed "s/^/#EXTINF:-1\n/" $i.txt | sed '1s/^/#EXTM3U\n/' > $i.m3u ; done
 
 echo "remove empty and temp files"
 
 # remove temp files
 #for i in $(cat temp_a.txt) ; do rm $i.txt ; done
 
-rm temp_a.txt temp_b.txt temp_c-*.txt 
+rm temp_a.txt temp_b.txt
 
 # remove empty files (links that didn't have mp3 files in them)
 find . -type f -empty -delete
