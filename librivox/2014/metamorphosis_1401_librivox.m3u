@@ -1,13 +1,7 @@
 #EXTM3U
 #EXTINF:-1
-https://archive.org/download/metamorphosis_1401_librivox/metamorphosis_1_kafka.mp3
-#EXTINF:-1
 https://archive.org/download/metamorphosis_1401_librivox/metamorphosis_1_kafka_128kb.mp3
 #EXTINF:-1
-https://archive.org/download/metamorphosis_1401_librivox/metamorphosis_2_kafka.mp3
-#EXTINF:-1
 https://archive.org/download/metamorphosis_1401_librivox/metamorphosis_2_kafka_128kb.mp3
-#EXTINF:-1
-https://archive.org/download/metamorphosis_1401_librivox/metamorphosis_3_kafka.mp3
 #EXTINF:-1
 https://archive.org/download/metamorphosis_1401_librivox/metamorphosis_3_kafka_128kb.mp3
