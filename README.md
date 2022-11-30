@@ -1,3 +1,14 @@
+## How to download?
+there is two main ways to download these, either use the automatically generated [zip file](https://github.com/junguler/easy-m3u-audiobooks/archive/refs/heads/main.zip) (this file gets updated every time i push updates to this repo)
+
+or use git
+```
+git clone https://github.com/junguler/easy-m3u-audiobooks.git
+```
+for furthur updates cd into the git folder on your hard drive and do a `git pull`
+
+<br>
+
 ## Why?
 because it's easier to listen than to download, there is so much stuff out there it doesn't make sense to me to download them when i can stream them and not put any load on the servers
 
