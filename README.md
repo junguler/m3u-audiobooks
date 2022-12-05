@@ -29,6 +29,14 @@ https://archive.org/details/indian_fairy_tales_1304_librivox
 
 <br>
 
+if you prefer to stay in the terminal you can also use something like this, lets find the title of this file
+```
+curl --silent https://archive.org/details/indian_fairy_tales_1304_librivox | htmlq h1 -t | sed -n '2 p' | sed 's/^ *//'
+```
+this outputs `Indian Fairy Tales` which is the exact title that is shown in the website, other details can also be taken from the page but in most cases the title is enough so i leave it at that
+
+<br>
+
 ## The bash script
 this script relies on gnu core utils and the lynx web browser, if you are on linux or mac you already have access to gnu core utils and installing lynx is as easy of finding it in your package manager
 
