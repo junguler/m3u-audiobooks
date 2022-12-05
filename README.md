@@ -10,9 +10,9 @@ for furthur updates cd into the git folder on your hard drive and do a `git pull
 <br>
 
 ## How to listen to these?
-in the terminal, do this:
+in the terminal, cd into the folder and do this:
 ```
-mpv https://raw.githubusercontent.com/junguler/easy-m3u-audiobooks/main/librivox/2007/christmas_bells_librivox.m3u
+mpv librivox\2005\A_Christmas_Carol.m3u
 ```
 or add/change `m3u` file association in your os to mpv or vlc and double click on any of `.m3u` files in your file manager
 
