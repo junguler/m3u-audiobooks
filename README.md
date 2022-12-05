@@ -231,3 +231,50 @@ python3 scrape.py --url https://archive.org/details/librivoxaudio?and[]=year%3A%
 this will effectively get us the exact same output if we scrolled the pages to the bottom and saved them manually
 
 </details>
+
+<br>
+
+## How to work with large text files
+some of these search queries contain many entries and it's hard to reliably scrape them, for these situations it's better to split files to more managable line numbers, lets explain this in some detail and show an example 
+
+<details>
+  <summary>click me to read</summary>
+  
+<br>
+
+i want to scrape this link ``https://archive.org/details/freemusicarchive`` , it has 16k+ files inside, our first roadblock is `archive.org` only shows 10k for every search query, so let's apply some filters to make this list less than 10,000 files, this paticular page includes a year category so lets choose years 2011-2021 for the first page apply the filter and it gives us 9k files, now scroll down as usual and save the page
+
+now go back to that exact search filter and untick years 2011-2021 and enable the rest to load and save, this leaves us with 2 files, i've named them 2011-end.txt and begining-2010.txt , now scrape the links from them (this example is using the firefox `save as plain text` method)
+
+```
+cat begining-2010.txt | grep "https://archive.org/details/" | grep -v "@\|?\|*\|#\| " | awk '!seen[$0]++' | sed 's/[<>,]//g' >> FMA.txt
+```
+```
+cat 2011-end.txt | grep "https://archive.org/details/" | grep -v "@\|?\|*\|#\| " | awk '!seen[$0]++' | sed 's/[<>,]//g' >> FMA.txt
+```
+
+notice that we used `>>` to combine both text files to one, now the `FMA.txt` files contains all the links, simple `cat` and `wc` shows us that it contains 16k lines
+```
+cat FMA.txt | wc
+```
+
+now lets convert this large text files to smaller more managable text files, lets cat all the lines and split the file by each character and numbers
+```
+for i in {a..z} {0..9} ; do cat FMA.txt | grep -iF "https://archive.org/details/$i" > $i.txt ; done
+```
+
+some of these are still very large and contain more than 1000 lines so lets further split them into smaller text files using the `split` command
+```
+for i in {a..z} {0..9} ; do split -l 200 $i.txt --additional-suffix=.txt $i$i$i- ; done
+```
+
+`-l 200` tells `split` to make every text file contain 200 lines or less, we add `.txt` suffix so each file is easily clickable/checkable and `$i$i$i-` is the prefix to make sorting the files easier
+
+now that we have all the files sorted and none of them contain more than 200 lines lets scrape the links and move the streams created from each file to it's own folder
+```
+for i in *.txt ; do m3u_lite.sh $i ; echo "$i done" ; mkdir ${i%.*} ; mv *.m3u ${i%.*} ; sleep 30s ; done
+```
+
+this one liner command also pauses for 30 seconds after each file is scraped so the `archive.org` servers won't be pushed too hard
+
+</details>
