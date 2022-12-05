@@ -9,6 +9,15 @@ for furthur updates cd into the git folder on your hard drive and do a `git pull
 
 <br>
 
+## How to listen to these?
+in the terminal, do this:
+```
+mpv https://raw.githubusercontent.com/junguler/easy-m3u-audiobooks/main/librivox/2007/christmas_bells_librivox.m3u
+```
+or add/change `m3u` file association in your os to mpv or vlc and double click on any of `.m3u` files in your file manager
+
+<br>
+
 ## Why?
 because it's easier to listen than to download, there is so much stuff out there it doesn't make sense to me to download them when i can stream them and not put any load on the servers
 
