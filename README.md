@@ -49,7 +49,7 @@ this outputs `Indian Fairy Tales` which is the exact title that is shown in the 
 ## The bash script
 this script relies on gnu core utils and the lynx web browser, if you are on linux or mac you already have access to gnu core utils and installing lynx is as easy of finding it in your package manager
 
-on windows i recommend using cygwin, msys2 or wsl/2, cygwing has lynx packaged and there are windows binaries out there for other platforms
+on windows i recommend using cygwin, msys2 or wsl/2, cygwin has lynx packaged and there are windows binaries out there for other platforms
 
 <details>
   <summary>click me to read</summary>
@@ -295,3 +295,16 @@ for i in *.txt ; do m3u_lite.sh $i ; echo "$i done" ; mkdir ${i%.*} ; mv *.m3u $
 this one liner command also pauses for 30 seconds after each file is scraped so the `archive.org` servers won't be pushed too hard
 
 </details>
+
+<br>
+
+## Create m3u streams using github actions
+
+i've included a `scrape_with_github_actions.yml` in this repo, with it you can scrape your own streams using the free access githubs gives to it's mini virtual machines for the lack better words 
+
+to use it in your own repo first create a `links.txt` with the links you want to create a m3u file from and add it to your repo, now download the `m3u_lite.sh` and place it in your repo too, next go to the Actions tab at the top of your repo and click on `set up a workflow yourself` paste the content of this yml file and click `start commit`
+
+a few things to note: 
+- you will need a github access token, create it and set the expiry date to never, don't put your actual token's info in the yml file, github automatically knows what to use
+- the `links.txt` should ideally be less than 1000 lines, i had mixed experience with text files larger than that
+- you can omit the part about timezone or change it to your own timezone to have a correct time shown in your output folder in your repo

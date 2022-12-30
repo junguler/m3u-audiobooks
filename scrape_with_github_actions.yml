@@ -1,0 +1,38 @@
+name: scrape m3u
+on:
+  push
+jobs:
+  automated-scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: set timezone
+        uses: szenius/set-timezone@master
+        with:
+          timezoneLinux: "Asia/Tehran"
+
+      - name: checkout repository
+        uses: actions/checkout@main
+
+      - name: install dependencies
+        run: sudo apt install lynx -y
+
+      - name: make script executable
+        run: chmod +x ./m3u_lite.sh
+
+      - name: start scraping
+        run: ./m3u_lite.sh ./links.txt
+
+      - name: list the streams
+        run: |
+          ls -la *.m3u
+          ls *.m3u | wc
+
+      - name: move streams to folder
+        run: |
+          mkdir $(date +%y_%b_%d_-_%H_%M_%p)
+          mv *.m3u $(date +%y_%b_%d_-_%H_%M_%p)
+
+      - name: add & commit
+        uses: EndBug/add-and-commit@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
