@@ -13,7 +13,7 @@ sed -i 's/\r$//' temp_a.txt
 echo "start scraping the links for mp3 files"
 
 # for links containing the 128kb.mp3 string
-for i in $(cat temp_a.txt) ; do lynx --dump --listonly --nonumbers "https://archive.org/download/$i" | grep -iF "128kb.mp3" | grep -iFv "64kb" | grep -iFv ".zip" > $i.txt ; done
+for i in $(cat temp_a.txt) ; do lynx --dump --listonly --nonumbers "https://archive.org/download/$i" | grep -iF "128kb.mp3" | grep -iFv "64kb" | grep -iFv ".zip" | sed 's/ /%20/g' > $i.txt ; done
 
 # find empty files if there is any and copy their names for the next command 
 find *.txt -size 0 | sed 's/.txt//g' > temp_b.txt

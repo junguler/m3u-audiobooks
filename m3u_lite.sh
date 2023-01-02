@@ -13,7 +13,7 @@ sed -i 's/\r$//' temp_a.txt
 echo "start scraping the links"
 
 # for links containing the 128kb.mp3 string
-for i in $(cat temp_a.txt) ; do lynx --dump --listonly --nonumbers "https://archive.org/download/$i" | grep -iF ".mp3" | grep -iFv "64kb" | grep -iFv ".zip" > $i.txt ; done
+for i in $(cat temp_a.txt) ; do lynx --dump --listonly --nonumbers "https://archive.org/download/$i" | grep -iF ".mp3" | grep -iFv "64kb" | grep -iFv ".zip" | sed 's/ /%20/g' > $i.txt ; done
 
 # add #EXTINF:-1 at the begining of every other line and #EXTM3U at the first line and convert the text file to m3u stream
 for i in $(cat temp_a.txt) ; do sed "s/^/#EXTINF:-1\n/" $i.txt | sed '1s/^/#EXTM3U\n/' > $i.m3u ; done
