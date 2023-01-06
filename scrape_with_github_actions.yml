@@ -29,8 +29,8 @@ jobs:
 
       - name: move streams to folder
         run: |
-          mkdir $(date +%y_%b_%d_-_%H_%M_%p)
-          mv *.m3u $(date +%y_%b_%d_-_%H_%M_%p)
+          mkdir $(date +%y_%b_%d_-_%I_%M_%p)
+          mv *.m3u $(date +%y_%b_%d_-_%I_%M_%p)
 
       - name: add & commit
         uses: EndBug/add-and-commit@main
