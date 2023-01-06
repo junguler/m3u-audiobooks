@@ -1,0 +1,3 @@
+https://archive.org/details/librivoxaudio
+
+LibriVox - founded in 2005 - is a community of volunteers from all over the world who record public domain texts: poetry, short stories, whole books, even dramatic works, in many different languages. All LibriVox recordings are in the public domain in the USA and available as free downloads on the internet. If you are not in the USA, please check your country's copyright law before downloading. 
