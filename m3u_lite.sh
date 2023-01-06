@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # take the list to scrape from, don't include the extension like .txt
-echo "insert the name of text file including different archive.org pages to scrape from"
-read list 
+#echo "insert the name of text file including different archive.org pages to scrape from"
+#read list 
 
 # remove extra part of the links to make naming the output files easier
-sed -e 's!https://archive.org/details/!!' $list.txt > temp_a.txt
+#sed -e 's!https://archive.org/details/!!' $list.txt > temp_a.txt
+sed -e 's!https://archive.org/details/!!' $1 > temp_a.txt
 
 # fix filename errors that some times occur on windows
 sed -i 's/\r$//' temp_a.txt
