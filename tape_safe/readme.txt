@@ -1,0 +1,3 @@
+https://archive.org/details/tapesafe
+
+Tape-Safe is a non-profit netlabel founded in 2012 in Belgium. All our releases are available for free download. Tape-Safe is a netlabel with an eclectic mix of styles and genres such as ambient, free improvisation, sound-scape, electronic, post rock, indus, noise, experimental, drone, field recording, shoegaze , psychedelic…and more. Tape-Safe is never in a hurry, we don't plan to put out a certain amount of releases per year. Tape-Safe is managed by Slo-Blo and Rafael González. We are always ...
