@@ -1,0 +1,3 @@
+https://archive.org/details/78rpm_kusf
+
+KUSF http://www.kusf.org/ is the University of San Francisco’s radio station in San Francisco, California. This non-commercial student-run station originally broadcast on-air from 1963-1977 as an AM station, and from 1977-2011 on the FM dial. This free-form and freewheeling college station was celebrated both nationally and internationally for its innovative music programming.
