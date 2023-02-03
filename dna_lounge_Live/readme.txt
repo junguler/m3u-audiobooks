@@ -1,0 +1,5 @@
+https://archive.org/details/dnalounge
+
+Founded in 1985, the DNA Lounge http://www.dnalounge.com/ (Dance Not Art) has provided live music acts as well as DJs and special events to the San Francisco area, and is one of the longer-surviving clubs of its kind. In 1999, the club was purchased by Jamie Zawinski, remodeled extensively, and re-opened in 2001. Since that time, it has hosted thousands of performances, all of which have been broadcast over the web and available for a short time after the event. These broadcasts have been downloaded over the last decade and compiled into this archive of shows, matched with information from the DNA Lounge website.
+
+Recordings were made via the soundboard for web broadcast, meaning performances not captured for amplification will be quieter. On average, each performance is six hours long and recorded in 128k mp3 format. Descriptions have been copied from the DNA Lounge calendar pages - corrections, additional recordings, historical context and comments are invited. Contact Jason Scott jscott@archive.org at the archive. 
