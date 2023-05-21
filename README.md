@@ -171,6 +171,21 @@ and the m3u files, these are the ones i'm including here in this repo, drag them
 
 <br>
 
+## Scrape the arhive.org using it's api
+
+i've included a `scrape_api.sh` script, with it you can create your own text file with addresses to feed to the 2 scraping scripts, usage is easy, just copy the last section of each audio collection and insert it after the name of the script in the terminal, so `https://archive.org/details/oldtimeradio` becomes `oldtimeradio`
+
+```
+scrape_api.sh oldtimeradio
+```
+
+after the script has run you will find a text file named `oldtimeradio.txt` with every link included
+
+note: the api is not the most stable and reliable service out there and some times it one finds the first 5000 entries, in such cases just wait and run the script again in a later time or use the api manually, see [this page](https://archive.org/help/aboutsearch.htm) for extra info 
+
+<br>
+
+
 ## Scrape the links from a archive.org search query in firefox
 some times you want every link from a search query to be listed in your list.txt file and don't want to manually include them in the text file, lets take the laziness one step further and do that via the commandline too
 
